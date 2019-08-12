@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="TabIndicatorItemView">
+        <attr name="tab_indicator_image_src" format="reference" />
+        <attr name="tab_indicator_text_string" format="reference" />
+    </declare-styleable>
+
+</resources>

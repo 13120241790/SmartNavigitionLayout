@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:innerRadius="0dp"
+    android:shape="ring"
+    android:thicknessRatio="2.1"
+    android:useLevel="false">
+    <!-- 填充的颜色 -->
+    <solid android:color="#FFFF5834" />
+
+    <size
+        android:width="20dp"
+        android:height="20dp" />
+</shape>
