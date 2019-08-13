@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">library</string>
+    <string name="tab_home">首页</string>
+    <string name="tab_house">楼盘</string>
+    <string name="tab_qa">问问</string>
+    <string name="tab_personal">我的</string>
 </resources>

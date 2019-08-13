@@ -2,7 +2,7 @@ package com.julive.library.smartnavigitionlayout.model;
 
 public class TabModel {
 
-    private int index = -1;
+    private int index = -1; //待优化点 index 增加去重
 
     private Object imageSelected;
 
@@ -18,7 +18,7 @@ public class TabModel {
         return index;
     }
 
-    public TabModel(int index) {//TODO index 去重
+    public TabModel(int index) {
         if (index < 0) {
             throw new IllegalArgumentException("Index can not negative!");
         }

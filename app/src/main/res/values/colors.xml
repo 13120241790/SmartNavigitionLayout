@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorView">#e2e2e2</color>
+    <color name="color_tab_indicator_text_normal">#5F5F5F</color>
+    <color name="color_tab_indicator_text_selected">#3A91F3</color>
 </resources>

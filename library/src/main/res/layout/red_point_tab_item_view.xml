@@ -20,7 +20,6 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:text="首页"
-        android:textColor="#999"
         android:textSize="12sp" />
 
 </LinearLayout>

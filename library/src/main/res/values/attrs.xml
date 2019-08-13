@@ -6,4 +6,15 @@
         <attr name="tab_indicator_text_string" format="reference" />
     </declare-styleable>
 
+    <declare-styleable name="TabItemView">
+        <attr name="tab_image_src" format="reference" />
+        <attr name="tab_text_string" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="SmartNavigationLayout">
+        <attr name="text_color_normal" format="color|reference" />
+        <attr name="text_color_selected" format="color|reference" />
+        <attr name="default_index" format="integer" />
+    </declare-styleable>
+
 </resources>

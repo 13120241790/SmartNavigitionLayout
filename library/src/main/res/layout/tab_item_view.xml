@@ -16,8 +16,8 @@
 
     <ImageView
         android:id="@+id/iv_tab_indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
         android:layout_gravity="center"
         android:src="@drawable/selector_tab_chat" />
 
@@ -26,9 +26,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="4dp"
         android:gravity="center"
+        android:maxLines="1"
         android:text="首页"
         android:textColor="#999"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:textStyle="bold" />
 
 </LinearLayout>
