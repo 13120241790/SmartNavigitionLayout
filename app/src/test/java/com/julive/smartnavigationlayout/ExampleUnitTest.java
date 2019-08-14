@@ -1,4 +1,4 @@
-package com.julive.smartnavigitionlayout;
+package com.julive.smartnavigationlayout;
 
 import org.junit.Test;
 

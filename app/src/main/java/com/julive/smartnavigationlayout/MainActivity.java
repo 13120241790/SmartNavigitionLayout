@@ -1,4 +1,4 @@
-package com.julive.smartnavigitionlayout;
+package com.julive.smartnavigationlayout;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

@@ -40,7 +40,7 @@ public class BitmapManager {
         mExecutorService.execute(new WorkRunnable(url, resultBitmapListener));
     }
 
-    class WorkRunnable implements Runnable {
+    private class WorkRunnable implements Runnable {
 
         private String url;
         private ResultBitmapListener resultBitmapListener;
