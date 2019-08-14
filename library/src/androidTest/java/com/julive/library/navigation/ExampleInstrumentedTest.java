@@ -1,4 +1,4 @@
-package com.julive.library.smartnavigitionlayout;
+package com.julive.library.navigation;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

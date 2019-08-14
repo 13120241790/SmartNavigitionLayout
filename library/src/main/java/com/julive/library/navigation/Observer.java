@@ -1,6 +1,6 @@
-package com.julive.library.smartnavigitionlayout;
+package com.julive.library.navigation;
 
-import com.julive.library.smartnavigitionlayout.model.TabModel;
+import com.julive.library.navigation.model.TabModel;
 
 public interface Observer {
     void update(int index);

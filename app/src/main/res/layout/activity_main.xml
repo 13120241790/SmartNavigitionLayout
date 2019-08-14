@@ -20,7 +20,7 @@
         app:layout_constraintBottom_toTopOf="@+id/smart_navigation_layout" />
 
 
-    <com.julive.library.smartnavigitionlayout.SmartNavigationLayout
+    <com.julive.library.navigation.SmartNavigationLayout
         android:id="@+id/smart_navigation_layout"
         android:layout_width="match_parent"
         android:layout_height="54dp"

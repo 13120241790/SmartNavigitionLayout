@@ -41,7 +41,7 @@
             android:textSize="12sp" />
     </LinearLayout>
 
-    <com.julive.library.smartnavigitionlayout.dragview.DraggableFlagView
+    <com.julive.library.navigation.dragview.DraggableFlagView
         android:id="@+id/dfv_remind"
         android:layout_width="18dp"
         android:layout_height="18dp"

@@ -1,4 +1,4 @@
-package com.julive.library.smartnavigitionlayout.dragview;
+package com.julive.library.navigation.dragview;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

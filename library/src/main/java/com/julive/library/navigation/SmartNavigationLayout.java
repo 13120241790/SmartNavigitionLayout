@@ -1,4 +1,4 @@
-package com.julive.library.smartnavigitionlayout;
+package com.julive.library.navigation;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.julive.library.smartnavigitionlayout.model.TabModel;
+import com.julive.library.navigation.model.TabModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,6 @@ public class SmartNavigationLayout extends LinearLayout implements View.OnClickL
         int textColorSelected = typedArray.getColor(R.styleable.SmartNavigationLayout_text_color_selected, getResources().getColor(R.color.color_FF3E4A59));
         int defaultIndex = typedArray.getInt(R.styleable.SmartNavigationLayout_default_index, 0);
         typedArray.recycle();
-
         LinearLayout rootView = (LinearLayout) inflate(context, R.layout.smart_navigation_layout, this);
         LinearLayout itemsView = (LinearLayout) rootView.getChildAt(0);
         for (int i = 0; i < itemsView.getChildCount(); i++) {
@@ -63,10 +62,16 @@ public class SmartNavigationLayout extends LinearLayout implements View.OnClickL
         mOnTabItemClickListener = onTabItemClickListener;
     }
 
+    /**
+     * 刷新某个样式
+     */
     public void refreshTabStyle(TabModel tabModel) {
         notifyItemUpdateStyle(tabModel);
     }
 
+    /**
+     * 刷新整体样式
+     */
     public void refreshTabListStyle(List<TabModel> tabModelList) {
         if (tabModelList != null && tabModelList.size() > 0) {
             if (tabModelList.size() == 1) {
@@ -79,6 +84,12 @@ public class SmartNavigationLayout extends LinearLayout implements View.OnClickL
         }
     }
 
+    /**
+     * 刷新整体样式
+     *
+     * @param colorNormal   文字正常颜色
+     * @param colorSelected 文字选中颜色
+     */
     public void refreshTabListStyle(List<TabModel> tabModelList, int colorNormal, int colorSelected) {
         if (tabModelList != null && tabModelList.size() > 0) {
             if (tabModelList.size() == 1) {

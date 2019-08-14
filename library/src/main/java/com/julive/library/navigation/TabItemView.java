@@ -1,4 +1,4 @@
-package com.julive.library.smartnavigitionlayout;
+package com.julive.library.navigation;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.julive.library.smartnavigitionlayout.model.TabModel;
+import com.julive.library.navigation.model.TabModel;
 
 import java.io.IOException;
 import java.io.InputStream;

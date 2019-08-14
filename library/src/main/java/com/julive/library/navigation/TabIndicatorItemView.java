@@ -1,4 +1,4 @@
-package com.julive.library.smartnavigitionlayout;
+package com.julive.library.navigation;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.julive.library.smartnavigitionlayout.dragview.DraggableFlagView;
+import com.julive.library.navigation.dragview.DraggableFlagView;
 
 
 public class TabIndicatorItemView extends LinearLayout {

@@ -1,4 +1,4 @@
-package com.julive.library.smartnavigitionlayout;
+package com.julive.library.navigation;
 
 public interface OnTabItemClickListener {
     void itemClick(int index);

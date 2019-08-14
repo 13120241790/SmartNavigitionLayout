@@ -1,8 +1,8 @@
-package com.julive.library.smartnavigitionlayout.model;
+package com.julive.library.navigation.model;
 
 public class TabModel {
 
-    private int index = -1; //待优化点 index 增加去重
+    private int index = -1; //待优化点 index 去重
 
     private Object imageSelected;
 
