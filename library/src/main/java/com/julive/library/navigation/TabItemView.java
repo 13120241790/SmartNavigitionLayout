@@ -3,7 +3,6 @@ package com.julive.library.navigation;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.support.annotation.ColorInt;
@@ -15,13 +14,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.julive.library.navigation.bimap.BitmapManager;
+import com.julive.library.navigation.bimap.ResultBitmapListener;
 import com.julive.library.navigation.model.TabModel;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 public class TabItemView extends LinearLayout implements Observer {
 
@@ -112,7 +108,7 @@ public class TabItemView extends LinearLayout implements Observer {
                     String imageNormalString = (String) tabModel.getImageNormal();
                     String imageSelectedString = (String) tabModel.getImageSelected();
                     if (imageNormalString.startsWith("http") || imageNormalString.startsWith("HTTP")) {
-                        httpBitMap(imageNormalString, new ResultBitmapListener() {
+                        BitmapManager.getInstance().httpBitMap(imageNormalString, new ResultBitmapListener() {
                             @Override
                             public void resultBitmap(final Bitmap bitmap) {
                                 bitmapNormal = bitmap;
@@ -128,7 +124,7 @@ public class TabItemView extends LinearLayout implements Observer {
 
                             }
                         });
-                        httpBitMap(imageSelectedString, new ResultBitmapListener() {
+                        BitmapManager.getInstance().httpBitMap(imageSelectedString, new ResultBitmapListener() {
                             @Override
                             public void resultBitmap(final Bitmap bitmap) {
                                 bitmapSelected = bitmap;
@@ -190,41 +186,4 @@ public class TabItemView extends LinearLayout implements Observer {
         mTabTextView.setTextColor(isSelected() ? colorSelected : colorNormal);
     }
 
-
-    public void httpBitMap(final String url, final ResultBitmapListener resultBitmapListener) {
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                URL imageUrl = null;
-
-                try {
-                    imageUrl = new URL(url);
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
-                    conn.setDoInput(true);
-                    conn.connect();
-                    InputStream is = conn.getInputStream();
-                    Bitmap bitmap = BitmapFactory.decodeStream(is);
-                    if (bitmap != null) {
-                        resultBitmapListener.resultBitmap(bitmap);
-                    }
-                    is.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (NullPointerException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-
-
-    }
-
-    public interface ResultBitmapListener {
-        void resultBitmap(Bitmap bitmap);
-    }
 }
