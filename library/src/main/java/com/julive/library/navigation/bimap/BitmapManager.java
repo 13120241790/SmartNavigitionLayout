@@ -12,9 +12,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.SynchronousQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 public class BitmapManager {
 
@@ -35,39 +32,28 @@ public class BitmapManager {
 
     private ExecutorService mExecutorService;
 
-    private WorkThread workThread;
-
     private BitmapManager() {
-//        mExecutorService = Executors.newSingleThreadExecutor();
-        mExecutorService = new ThreadPoolExecutor(0, 8,
-                5L, TimeUnit.SECONDS,
-                new SynchronousQueue<Runnable>());
-        workThread = new WorkThread();
+        mExecutorService = Executors.newCachedThreadPool();
     }
 
     public void httpToBitMap(String url, ResultBitmapListener resultBitmapListener) {
-//        workThread.setUrl(url);
-//        workThread.setResultBitmapListener(resultBitmapListener);
-//        mExecutorService.execute(workThread);
-        mExecutorService.execute(new WorkThread(url, resultBitmapListener));
+        mExecutorService.execute(new WorkRunnable(url, resultBitmapListener));
     }
 
-    class WorkThread extends Thread {
+    class WorkRunnable implements Runnable {
 
         private String url;
         private ResultBitmapListener resultBitmapListener;
 
-        private WorkThread(String url, ResultBitmapListener resultBitmapListener) {
+        private WorkRunnable(String url, ResultBitmapListener resultBitmapListener) {
             this.url = url;
             this.resultBitmapListener = resultBitmapListener;
         }
 
-        private WorkThread() {
-        }
-
         @Override
         public void run() {
-            Log.e(TAG, " Thread name: " + getName() + " Thread id: " + getId());
+
+            Log.e(TAG, " Thread name: " + Thread.currentThread().getName() + " Thread id: " + Thread.currentThread().getId());
 
             URL imageUrl = null;
 
@@ -91,14 +77,6 @@ public class BitmapManager {
             } catch (NullPointerException e) {
                 e.printStackTrace();
             }
-        }
-
-        public void setUrl(String url) {
-            this.url = url;
-        }
-
-        public void setResultBitmapListener(ResultBitmapListener resultBitmapListener) {
-            this.resultBitmapListener = resultBitmapListener;
         }
     }
 }
