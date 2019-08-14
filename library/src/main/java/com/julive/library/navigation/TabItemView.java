@@ -108,7 +108,7 @@ public class TabItemView extends LinearLayout implements Observer {
                     String imageNormalString = (String) tabModel.getImageNormal();
                     String imageSelectedString = (String) tabModel.getImageSelected();
                     if (imageNormalString.startsWith("http") || imageNormalString.startsWith("HTTP")) {
-                        BitmapManager.getInstance().httpBitMap(imageNormalString, new ResultBitmapListener() {
+                        BitmapManager.getInstance().httpToBitMap(imageNormalString, new ResultBitmapListener() {
                             @Override
                             public void resultBitmap(final Bitmap bitmap) {
                                 bitmapNormal = bitmap;
@@ -124,7 +124,7 @@ public class TabItemView extends LinearLayout implements Observer {
 
                             }
                         });
-                        BitmapManager.getInstance().httpBitMap(imageSelectedString, new ResultBitmapListener() {
+                        BitmapManager.getInstance().httpToBitMap(imageSelectedString, new ResultBitmapListener() {
                             @Override
                             public void resultBitmap(final Bitmap bitmap) {
                                 bitmapSelected = bitmap;

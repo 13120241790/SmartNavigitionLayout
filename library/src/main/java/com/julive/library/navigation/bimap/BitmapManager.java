@@ -11,27 +11,16 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-/**
- * 支持 http 图片转 bitmap
- * TODO 检查 bitmap 过大则压缩
- */
 public class BitmapManager {
 
     private static final String TAG = BitmapManager.class.getSimpleName();
 
     private static BitmapManager mInstance;
-
-    private ExecutorService mExecutorService;
-
-    private BitmapManager() {
-        mExecutorService = new ThreadPoolExecutor(0, 8,
-                5L, TimeUnit.SECONDS,
-                new SynchronousQueue<Runnable>());
-    }
 
     public static BitmapManager getInstance() {
         if (mInstance == null) {
@@ -44,7 +33,22 @@ public class BitmapManager {
         return mInstance;
     }
 
-    public void httpBitMap(String url, ResultBitmapListener resultBitmapListener) {
+    private ExecutorService mExecutorService;
+
+    private WorkThread workThread;
+
+    private BitmapManager() {
+//        mExecutorService = Executors.newSingleThreadExecutor();
+        mExecutorService = new ThreadPoolExecutor(0, 8,
+                5L, TimeUnit.SECONDS,
+                new SynchronousQueue<Runnable>());
+        workThread = new WorkThread();
+    }
+
+    public void httpToBitMap(String url, ResultBitmapListener resultBitmapListener) {
+//        workThread.setUrl(url);
+//        workThread.setResultBitmapListener(resultBitmapListener);
+//        mExecutorService.execute(workThread);
         mExecutorService.execute(new WorkThread(url, resultBitmapListener));
     }
 
@@ -56,6 +60,9 @@ public class BitmapManager {
         private WorkThread(String url, ResultBitmapListener resultBitmapListener) {
             this.url = url;
             this.resultBitmapListener = resultBitmapListener;
+        }
+
+        private WorkThread() {
         }
 
         @Override
@@ -85,13 +92,16 @@ public class BitmapManager {
                 e.printStackTrace();
             }
         }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public void setResultBitmapListener(ResultBitmapListener resultBitmapListener) {
+            this.resultBitmapListener = resultBitmapListener;
+        }
     }
 }
 
-
-//    private static Context mContext;
-//    public static void init(Context context){
-//        mContext = context;
-//    }
 
 
