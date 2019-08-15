@@ -8,7 +8,7 @@
 
 默认 Navigation 导航
 
-![20190815144225](/Users/macbook/Documents/SmartNavigitionLayout/images/20190815144225.jpg)
+![20190815144225](./images/20190815144225.jpg)
 
 
 
@@ -16,7 +16,7 @@
 
 
 
-![20190815144355](/Users/macbook/Documents/SmartNavigitionLayout/images/20190815144355.jpg)
+![20190815144355](./images/20190815144355.jpg)
 
 
 
@@ -26,7 +26,7 @@
 
 
 
-![20190815144328](/Users/macbook/Documents/SmartNavigitionLayout/images/20190815144328.jpg)
+![20190815144328](./images/20190815144328.jpg)
 
 
 
@@ -34,7 +34,7 @@
 
 
 
-![20190815144306](/Users/macbook/Documents/SmartNavigitionLayout/images/20190815144306.jpg)
+![20190815144306](./images/20190815144306.jpg)
 
 
 
@@ -110,7 +110,7 @@ TabItemView : Tab 的 View ，负责处理 Tab 的选中和非选中状态。包
 
 Step 1:
 
-xml 
+Xml 
 
 ```xml
 <android.support.v4.view.ViewPager
@@ -171,7 +171,7 @@ layout/smart_navigation_layout.xml
 
 
 
-java
+Java
 
 
 
