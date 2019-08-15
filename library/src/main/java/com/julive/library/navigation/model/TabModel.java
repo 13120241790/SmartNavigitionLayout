@@ -25,6 +25,8 @@ public class TabModel {
         this.index = index;
     }
 
+    private TabModel(){}
+
     public Object getImageSelected() {
         return imageSelected;
     }
