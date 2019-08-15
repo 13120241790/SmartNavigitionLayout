@@ -41,23 +41,19 @@ public class TabItemView extends LinearLayout implements Observer {
 
     private Context mContext;
 
-
     public TabItemView(Context context) {
-        this(context, null);
+        super(context);
+        initView(context, null);
     }
 
     public TabItemView(Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs, 0);
+        super(context, attrs);
+        initView(context, attrs);
     }
 
-    public TabItemView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
+    private void initView(Context context, AttributeSet attrs) {
         mContext = context;
-        inflate(context, providerItemLayout(), this);
-        mImageView = findViewById(R.id.iv_tab_indicator);
-        mTabTextView = findViewById(R.id.tv_tab_indicator);
-        mRedPointView = findViewById(R.id.v_red_point);
-
+        initSubView(context);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.TabItemView);
         Drawable drawable = typedArray.getDrawable(R.styleable.TabItemView_tab_image_src);
         if (drawable != null) {
@@ -69,7 +65,6 @@ public class TabItemView extends LinearLayout implements Observer {
         }
         typedArray.recycle();
     }
-
 
     @Override
     public void setSelected(boolean selected) {
@@ -151,10 +146,6 @@ public class TabItemView extends LinearLayout implements Observer {
         }
     }
 
-    public void setIndex(int index) {
-//        this.index = index;
-    }
-
     /**
      * @return TabItemView 的布局
      */
@@ -186,4 +177,11 @@ public class TabItemView extends LinearLayout implements Observer {
         mTabTextView.setTextColor(isSelected() ? colorSelected : colorNormal);
     }
 
+    private void initSubView(Context context) {
+        mContext = context;
+        inflate(context, providerItemLayout(), this);
+        mImageView = findViewById(R.id.iv_tab_indicator);
+        mTabTextView = findViewById(R.id.tv_tab_indicator);
+        mRedPointView = findViewById(R.id.v_red_point);
+    }
 }

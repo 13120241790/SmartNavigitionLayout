@@ -6,30 +6,26 @@
     android:orientation="horizontal">
 
     <com.julive.library.navigation.TabItemView
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         app:tab_image_src="@drawable/selector_tab_home"
         app:tab_text_string="@string/tab_home" />
 
     <com.julive.library.navigation.TabItemView
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         app:tab_image_src="@drawable/selector_tab_consultant"
         app:tab_text_string="@string/tab_house" />
 
     <com.julive.library.navigation.TabItemView
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         app:tab_image_src="@drawable/selector_tab_qa"
         app:tab_text_string="@string/tab_qa" />
 
     <com.julive.library.navigation.TabItemView
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         app:tab_image_src="@drawable/selector_tab_personal"
         app:tab_text_string="@string/tab_personal" />
 

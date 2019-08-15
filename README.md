@@ -137,31 +137,27 @@ layout/smart_navigation_layout.xml
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-    <com.julive.library.navigation.TabItemView
-        android:layout_width="0dp"
+     <com.julive.library.navigation.TabItemView
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         app:tab_image_src="@drawable/selector_tab_home"
         app:tab_text_string="@string/tab_home" />
 
     <com.julive.library.navigation.TabItemView
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         app:tab_image_src="@drawable/selector_tab_consultant"
         app:tab_text_string="@string/tab_house" />
 
     <com.julive.library.navigation.TabItemView
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         app:tab_image_src="@drawable/selector_tab_qa"
         app:tab_text_string="@string/tab_qa" />
 
     <com.julive.library.navigation.TabItemView
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         app:tab_image_src="@drawable/selector_tab_personal"
         app:tab_text_string="@string/tab_personal" />
 
@@ -197,6 +193,10 @@ navigationLayout.setOnTabItemClickListener(new OnTabItemClickListener() {
 
 ## TODO
 
-- 动态新增，删除 Tab
+- Tab 小红点功能
+
 - 对网络下发图片 icon bitmap 如果过大的压缩处理
+
 - 去 layout/smart_navigation_layout.xml 化
+
+  

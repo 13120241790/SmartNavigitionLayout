@@ -37,15 +37,16 @@ public class SmartNavigationLayout extends LinearLayout implements View.OnClickL
         LinearLayout itemsView = (LinearLayout) rootView.getChildAt(0);
         for (int i = 0; i < itemsView.getChildCount(); i++) {
             TabItemView tabItemView = (TabItemView) itemsView.getChildAt(i);
+            LinearLayout.LayoutParams layoutParams = new LayoutParams(0, LayoutParams.MATCH_PARENT, 1.0f);
+            tabItemView.setLayoutParams(layoutParams);
             tabItemView.setTag(i);
-            tabItemView.setIndex(i);
             tabItemView.setTextColor(textColorNormal, textColorSelected);
             tabItemView.setOnClickListener(this);
             tabItemView.setSelected(defaultIndex == i);
             register(tabItemView);
         }
-
     }
+
 
     @Override
     public void onClick(View v) {
