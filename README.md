@@ -1,6 +1,6 @@
 
 
-# SmartNavigitionLayout
+# SmartNavigationLayout
 
 
 
@@ -22,7 +22,7 @@
 
 
 
-指定一组 tabs 样式切
+指定一组 tabs 样式切换
 
 
 
