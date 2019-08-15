@@ -48,7 +48,7 @@
 
 
 
-TabModel : tab 样式的实体类，对 tab 的图片 文字 文字颜色的选中和非选中状态进行描述，采用 Builder 模式为其提供实例产生方式:
+**TabModel** : tab 样式的实体类，对 tab 的图片 文字 文字颜色的选中和非选中状态进行描述，采用 Builder 模式为其提供实例产生方式:
 
 
 
@@ -65,7 +65,7 @@ new TabModel(2)
 
 
 
-SmartNavigationLayout : 包含 TabItemView 的组合 View ，也是事件的发布者。对外提供 API 功能接口
+**SmartNavigationLayout** : 包含 TabItemView 的组合 View ，也是事件的发布者。对外提供 API 功能接口
 
 
 
@@ -85,13 +85,13 @@ API :
 | :-----------------------: | :--------------------: | :----------: | :-----------: | :------------------------------------------: |
 | setOnTabItemClickListener | OnTabItemClickListener |              |               |             Tabs 的点击事件监听              |
 |      refreshTabStyle      |        TabModel        |              |               |              刷新指定 tab 样式               |
-|    refreshTabListStyle    |     List<TabModel>     |              |               |              刷新一组 tabs 样式              |
-|    refreshTabListStyle    |     List<TabModel>     | colorNormal  | colorSelected | 刷新一组 tabs 样式, 指定文字的选中非选中颜色 |
+|    refreshTabListStyle    |     List< TabModel >   |              |               |              刷新一组 tabs 样式              |
+|    refreshTabListStyle    |     List< TabModel >   | colorNormal  | colorSelected | 刷新一组 tabs 样式, 指定文字的选中非选中颜色 |
 |    setPointVisibility     |         Index          | isVisibility |     count     |          设置指定 tab 红点是否隐藏           |
 
 
 
-TabItemView : Tab 的 View ，负责处理 Tab 的选中和非选中状态。包含 Tab 的文字、颜色、小红点、Icon 等，也是事件的订阅者。
+**TabItemView** : Tab 的 View ，负责处理 Tab 的选中和非选中状态。包含 Tab 的文字、颜色、小红点、Icon 等，也是事件的订阅者。
 
 
 
