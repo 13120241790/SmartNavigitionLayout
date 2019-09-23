@@ -81,13 +81,14 @@ new TabModel(2)
 
 API :
 
-|          Method           |         param1         |    param2    |    param3     |                     释义                     |
-| :-----------------------: | :--------------------: | :----------: | :-----------: | :------------------------------------------: |
-| setOnTabItemClickListener | OnTabItemClickListener |              |               |             Tabs 的点击事件监听              |
-|      refreshTabStyle      |        TabModel        |              |               |              刷新指定 tab 样式               |
-|    refreshTabListStyle    |     List< TabModel >   |              |               |              刷新一组 tabs 样式              |
-|    refreshTabListStyle    |     List< TabModel >   | colorNormal  | colorSelected | 刷新一组 tabs 样式, 指定文字的选中非选中颜色 |
-|    setPointVisibility     |         Index          | isVisibility |     count     |          设置指定 tab 红点是否隐藏           |
+|          Method           |         param1         |    param2    |    param3     |                     释义                     |                                |
+| :-----------------------: | :--------------------: | :----------: | :-----------: | :------------------------------------------: | ------------------------------ |
+| setOnTabItemClickListener | OnTabItemClickListener |              |               |             Tabs 的点击事件监听              |                                |
+|      refreshTabStyle      |        TabModel        |              |               |              刷新指定 tab 样式               |                                |
+|    refreshTabListStyle    |    List< TabModel >    |              |               |              刷新一组 tabs 样式              |                                |
+|    refreshTabListStyle    |    List< TabModel >    | colorNormal  | colorSelected | 刷新一组 tabs 样式, 指定文字的选中非选中颜色 |                                |
+|    setPointVisibility     |         Index          | isVisibility |     count     |          设置指定 tab 红点是否隐藏           |                                |
+|   configRedPointByIndex   |         index          |  leftOffset  |   topOffset   |                  RemindType                  | 设置小红点的偏移量以及展示样式 |
 
 
 
@@ -192,8 +193,6 @@ navigationLayout.setOnTabItemClickListener(new OnTabItemClickListener() {
 
 
 ## TODO
-
-- Tab 小红点功能
 
 - 对网络下发图片 icon bitmap 如果过大的压缩处理
 
