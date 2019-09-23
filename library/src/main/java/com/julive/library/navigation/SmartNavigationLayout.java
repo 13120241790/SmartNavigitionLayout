@@ -116,6 +116,22 @@ public class SmartNavigationLayout extends LinearLayout implements View.OnClickL
         notifyItemPointVisibility(index, isVisibility, count);
     }
 
+    /**
+     * 小红点的配置项
+     *
+     * @param index      指定哪个下标的小红点，下标从 0 开始
+     * @param leftOffset 距 Tab 左上角 X 轴 从 0 开始的偏移量 单位 px
+     * @param topOffset  距 Tab 顶部 Y 轴 从 0 开始的偏移量 单位 px
+     * @param remindType 提醒状态
+     * @return SmartNavigationLayout
+     */
+    public SmartNavigationLayout configRedPointByIndex(int index, int leftOffset, int topOffset, RemindType remindType) {
+        if (index < 0 || leftOffset < 0 || topOffset < 0) {
+            throw new IllegalArgumentException();
+        }
+        notifyItemPointConfig(index, leftOffset, topOffset, remindType);
+        return this;
+    }
 
     private void register(Observer observer) {
         if (mObservers.contains(observer)) {
@@ -139,6 +155,12 @@ public class SmartNavigationLayout extends LinearLayout implements View.OnClickL
     private void notifyItemPointVisibility(int index, boolean isVisibility, int count) {
         for (Observer observer : mObservers) {
             observer.pointVisibility(index, isVisibility, count);
+        }
+    }
+
+    private void notifyItemPointConfig(int index, int leftOffset, int topOffset, RemindType remindType) {
+        for (Observer observer : mObservers) {
+            observer.pointStyleConfig(index, leftOffset, topOffset, remindType);
         }
     }
 

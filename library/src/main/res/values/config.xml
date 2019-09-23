@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--底部 Tab 距左侧默认偏移量 单位 px-->
+    <integer name="tab_left_offset">150</integer>
+    <!--底部 Tab 距顶部默认偏移量 单位 px-->
+    <integer name="tab_top_offset">15</integer>
+    <!-- 小红点可拖拽配置 -->
+    <bool name="draggable">true</bool>
+</resources>

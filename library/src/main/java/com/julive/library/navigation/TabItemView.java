@@ -1,6 +1,7 @@
 package com.julive.library.navigation;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
@@ -9,13 +10,14 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.julive.library.navigation.bimap.BitmapManager;
 import com.julive.library.navigation.bimap.ResultBitmapListener;
+import com.julive.library.navigation.dragview.DraggableFlagView;
 import com.julive.library.navigation.model.TabModel;
 
 
@@ -25,7 +27,7 @@ public class TabItemView extends LinearLayout implements Observer {
 
     protected ImageView mImageView;
 
-    private View mRedPointView;
+    private DraggableFlagView mRedPointView;
 
     private int mColorNormal;
 
@@ -40,6 +42,8 @@ public class TabItemView extends LinearLayout implements Observer {
     private int mDrawableSelected;
 
     private Context mContext;
+
+    private RemindType mCurrentRemindType = RemindType.REMIND_NORMAL;
 
     public TabItemView(Context context) {
         super(context);
@@ -79,11 +83,7 @@ public class TabItemView extends LinearLayout implements Observer {
 
     @Override
     public void update(int index) {
-        if (index == (int) getTag()) {
-            setSelected(true);
-        } else {
-            setSelected(false);
-        }
+        setSelected(index == (int) getTag());
     }
 
     @Override
@@ -165,9 +165,18 @@ public class TabItemView extends LinearLayout implements Observer {
     @Override
     public void pointVisibility(int index, boolean isVisibility, int count) {
         if (index == (int) getTag()) {
-            if (isVisibility) {
-            }
             setRedPointVisibility(isVisibility);
+            if (mCurrentRemindType == RemindType.REMIND_TEXT) {
+                mRedPointView.setText(String.valueOf(count));
+            }
+        }
+    }
+
+    @Override
+    public void pointStyleConfig(int index, int leftOffset, int topOffset, RemindType remindType) {
+        if (index == (int) getTag()) {
+            mCurrentRemindType = remindType;
+            setRedPointViewOffset(leftOffset, topOffset, remindType);
         }
     }
 
@@ -183,5 +192,31 @@ public class TabItemView extends LinearLayout implements Observer {
         mImageView = findViewById(R.id.iv_tab_indicator);
         mTabTextView = findViewById(R.id.tv_tab_indicator);
         mRedPointView = findViewById(R.id.v_red_point);
+        int TAB_LEFT_OFFSET = 0;
+        int TAB_TOP_OFFSET = 0;
+        boolean IS_DRAGGABLE = false;
+        try {
+            TAB_LEFT_OFFSET = getResources().getInteger(getResources().getIdentifier("tab_left_offset", "integer", getContext().getPackageName()));
+            TAB_TOP_OFFSET = getResources().getInteger(getResources().getIdentifier("tab_top_offset", "integer", getContext().getPackageName()));
+            IS_DRAGGABLE = getResources().getBoolean(getResources().getIdentifier("draggable", "bool", getContext().getPackageName()));
+        } catch (Resources.NotFoundException e) {
+            e.printStackTrace();
+        }
+        setRedPointViewOffset(TAB_LEFT_OFFSET, TAB_TOP_OFFSET, RemindType.REMIND_NORMAL);
+        mRedPointView.setDraggable(IS_DRAGGABLE);
+    }
+
+    private void setRedPointViewOffset(int leftOffset, int topOffset, RemindType remindType) {
+        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) mRedPointView.getLayoutParams();
+        if (remindType == RemindType.REMIND_NORMAL) {
+            mRedPointView.setText(null);
+            layoutParams.width = (int) getResources().getDimension(R.dimen.dimen_size_8);
+            layoutParams.height = (int) getResources().getDimension(R.dimen.dimen_size_8);
+        } else {
+            layoutParams.width = (int) getResources().getDimension(R.dimen.dimen_size_16);
+            layoutParams.height = (int) getResources().getDimension(R.dimen.dimen_size_16);
+        }
+        layoutParams.setMargins(leftOffset, topOffset, layoutParams.rightMargin, layoutParams.bottomMargin);
+        mRedPointView.setLayoutParams(layoutParams);
     }
 }

@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.julive.library.navigation.OnTabItemClickListener;
+import com.julive.library.navigation.RemindType;
 import com.julive.library.navigation.SmartNavigationLayout;
 import com.julive.library.navigation.model.TabModel;
 
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         navigationLayout = findViewById(R.id.smart_navigation_layout);
+        navigationLayout.configRedPointByIndex(1, 150, 20, RemindType.REMIND_TEXT)
+                .configRedPointByIndex(3, 150, 20, RemindType.REMIND_NORMAL);
         navigationLayout.setOnTabItemClickListener(new OnTabItemClickListener() {
             @Override
             public void itemClick(int index) {
@@ -46,6 +49,18 @@ public class MainActivity extends AppCompatActivity {
             case 3:
                 navigationLayout.refreshTabListStyle(SampleDataProvider.createNetWorkStyles());
                 break;
+            case 4:
+                setRedPointVisibility(1, true, 9);
+                break;
+            case 5:
+                setRedPointVisibility(1, false, 9);
+                break;
+            case 6:
+                setRedPointVisibility(3, true, 9);
+                break;
+            case 7:
+                setRedPointVisibility(3, false, 9);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -55,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
         menu.add(1, 1, 1, "切换 Tab Style");
         menu.add(1, 2, 2, "更换整体样式");
         menu.add(1, 3, 3, "模拟网络下发 Icon");
+        menu.add(1, 4, 4, "展示未读小红点");
+        menu.add(1, 5, 5, "隐藏未读小红点");
+        menu.add(1, 6, 6, "展示提醒小红点");
+        menu.add(1, 7, 7, "隐藏提醒小红点");
         return true;
     }
 
@@ -65,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
      * @param isVisibility
      * @param count
      */
-    public void setRedPointVisiblity(int index, boolean isVisibility, int count) {
+    public void setRedPointVisibility(int index, boolean isVisibility, int count) {
         navigationLayout.setPointVisibility(index, isVisibility, count);
     }
 
